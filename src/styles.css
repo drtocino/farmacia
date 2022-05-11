@@ -1,1 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html{
+    height: 100%;
+}
+
+.main{
+    background-image: url(./assets/layered-waves-haikei.svg);
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: auto;
+}
