@@ -1,0 +1,31 @@
+<div>
+    <h1 class="font-semibold text-xl mb-4">Productos</h1>
+    <div class="flex">
+        <button class="bg-emerald-600 hover:bg-emerald-500 text-sm self-end rounded-lg px-3 py-1.5 text-white" >Nuevo producto</button>
+    </div>
+    <div class="relative overflow-x-auto rounded mt-3">
+        <table class="w-full text-sm text-left text-gray-400">
+            <thead class="text-xs uppercase bg-gray-700">
+                <tr>
+                    <th class="px-6 py-3" >Nombre</th>
+                    <th class="px-6 py-3" >Stock</th>
+                    <th class="px-6 py-3" >Precio</th>
+                    <th class="px-6 py-3" >Laboratorio/Fabrica</th>
+                    <th class="px-6 py-3" ></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="bg-gray-800 border-t border-gray-700" *ngFor="let product of productos" >
+                    <td class="px-6 py-3 font-medium text-white whitespace-nowrap" >{{product.nombre}}</td>
+                    <td class="px-6 py-3" >{{product.stock}}</td>
+                    <td class="px-6 py-3" >Bs. {{product.precio}}</td>
+                    <td class="px-6 py-3" >{{product.laboratorio}}</td>
+                    <td class="px-6 py-3 float-right flex items-center gap-1" >
+                        <button class="bg-teal-500 hover:bg-teal-400 rounded-lg px-3 py-1.5 text-white">Editar</button>
+                        <button class="bg-red-600 hover:bg-red-500 rounded-lg px-3 py-1.5 text-white">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -10,6 +10,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ProductosComponent } from './productos/productos.component';
+import { FacturacionComponent } from './facturacion/facturacion.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     DashboardComponent,
     UsuariosComponent,
     NavbarComponent,
+    ProductosComponent,
+    FacturacionComponent,
   ],
   imports: [
     FormsModule,
