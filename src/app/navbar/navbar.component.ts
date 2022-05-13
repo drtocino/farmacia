@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faArrowAltCircleRight, faArrowRight, faCaretRight, faCoffee, faDashboard, faGripHorizontal, faPills, faTriangleCircleSquare, faTriangleExclamation, faUsers } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
+  dashboard = faGripHorizontal
+  users = faUsers
+  pills = faPills
+  arrow = faCaretRight
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  hideNav(){
+    
   }
 
 }

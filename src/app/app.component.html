@@ -1,5 +1,11 @@
-
-<div class="bg-slate-900/0">
-  <router-outlet></router-outlet>
-  
+<div class="bg-slate-900 min-h-screen text-white">
+  <div *ngIf="logged; else elseBlock">
+    <app-navbar></app-navbar>
+    <div class="ml-64 p-3 pl-8">
+      <router-outlet ></router-outlet>
+    </div>
+  </div>
+  <ng-template #elseBlock class="" >
+    <login (enviarForm)="handleAuth($event)" ></login>
+  </ng-template>
 </div>
