@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { faArrowAltCircleRight, faArrowRight, faCaretRight, faCoffee, faDashboard, faGripHorizontal, faPills, faStaffAesculapius, faTriangleCircleSquare, faTriangleExclamation, faUsers } from '@fortawesome/free-solid-svg-icons';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { faArrowAltCircleRight, faArrowRight, faCaretLeft, faCaretRight, faCoffee, faDashboard, faGripHorizontal, faPills, faStaffAesculapius, faTriangleCircleSquare, faTriangleExclamation, faUsers } from '@fortawesome/free-solid-svg-icons';
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({
@@ -12,11 +12,13 @@ export class NavbarComponent implements OnInit {
   dashboard = faGripHorizontal
   users = faUsers
   pills = faPills
-  arrow = faCaretRight
+  arrow = faCaretLeft
   logo = faStaffAesculapius
 
   sideBar : boolean = false;
   rol : string = "";
+
+  @Output() hideNavBar = new EventEmitter();
 
   constructor(private cookieService : CookieService) { }
 
@@ -27,7 +29,8 @@ export class NavbarComponent implements OnInit {
   
 
   hideNav(){
-    
+    this.sideBar = !this.sideBar;
+    this.hideNavBar.emit(!this.sideBar)
   }
 
 }

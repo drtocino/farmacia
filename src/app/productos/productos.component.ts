@@ -53,14 +53,32 @@ export class ProductosComponent implements OnInit {
       reverseButtons: true,
       preConfirm: () => {
         //var nombre = document.getElementById("nombre").value;
-        this.http.post<Producto>("http://localhost:3001/postProducto",{
+        this.http.post<Response>("http://localhost:3001/postProducto",{
           nombre: (<HTMLInputElement>document.getElementById('nombre')).value,
           stock: (<HTMLInputElement>document.getElementById('stock')).value,
           precio: (<HTMLInputElement>document.getElementById('precio')).value,
           laboratorio: (<HTMLInputElement>document.getElementById('laboratorio')).value,
           descripcion: (<HTMLInputElement>document.getElementById('descripcion')).value,
         }).subscribe((val) => {
-          this.getProductos()
+          this.getProductos();
+          //console.log(val)
+          val ? Swal.fire({
+            title: "Exito",
+            icon: "success",
+            text: "Se registro correctamente el producto",
+            confirmButtonColor: 'rgb(5 150 105)',
+            iconColor: 'rgb(5 150 105)',
+            background: "rgb(15 23 42)",
+          color: "white",
+          })
+          : Swal.fire({
+            title: "Error",
+            icon: "error",
+            text: "Ocurrio un error, revise los datos e intente de nuevo por favor",
+            confirmButtonColor: 'rgb(220 38 38)',
+            background: "rgb(15 23 42)",
+            color: "white",
+          })
         })
       }
     })
@@ -83,8 +101,25 @@ export class ProductosComponent implements OnInit {
       cancelButtonText: "Cancelar",
       reverseButtons: true,
       preConfirm: () => {
-        this.http.delete<Producto>(`http://localhost:3001/delProducto/${id}`).subscribe((val) => {
-          this.getProductos()
+        this.http.delete<Response>(`http://localhost:3001/delProducto/${id}`).subscribe((val) => {
+          this.getProductos();
+          val ? Swal.fire({
+            title: "Exito",
+            icon: "success",
+            text: "Se elimino correctamente el producto",
+            confirmButtonColor: 'rgb(5 150 105)',
+            iconColor: 'rgb(5 150 105)',
+            background: "rgb(15 23 42)",
+            color: "white",
+          })
+          : Swal.fire({
+            title: "Error",
+            icon: "error",
+            text: "Ocurrio un error, revise los datos e intente de nuevo por favor",
+            confirmButtonColor: 'rgb(220 38 38)',
+            background: "rgb(15 23 42)",
+            color: "white",
+          })
         })
       }
     })
@@ -100,7 +135,10 @@ export class ProductosComponent implements OnInit {
         <label class="">Stock</label>
         <input id="stock" class="col-span-2 border text-sm px-2 py-1.5 border-slate-700 w-auto bg-slate-800 rounded" value="${datos.stock}" />
         <label class="">Precio unitario</label>
-        <input id="precio" class="col-span-2 border text-sm px-2 py-1.5 border-slate-700 w-auto bg-slate-800 rounded" value="${datos.precio}" />
+        <div class="col-span-2 flex w-full">
+        <span class="inline-flex items-center px-3 min-w-fit text-sm text-gray-900 bg-gray-200 rounded-l border border-r-0 border-gray-300 dark:bg-gray-600 dark:text-gray-300 dark:border-gray-600">Bs</span>
+        <input id="precio" class="  border text-sm px-2 py-1.5 border-slate-700 w-full bg-slate-800 rounded-r" value="${datos.precio}" />
+        </div>
         <label class="">Laboratorio</label>
         <input id="laboratorio" class="col-span-2 border text-sm px-2 py-1.5 border-slate-700 w-auto bg-slate-800 rounded" value="${datos.laboratorio}" />
         <label class="">Descripcion</label>
@@ -128,12 +166,18 @@ export class ProductosComponent implements OnInit {
             title: "Exito",
             icon: "success",
             text: "Se edito correctamente el producto",
+            confirmButtonColor: 'rgb(5 150 105)',
+            iconColor: 'rgb(5 150 105)',
+            background: "rgb(15 23 42)",
+            color: "white",
           })
           : Swal.fire({
             title: "Error",
             icon: "error",
-            text: "Ocurrio un error, revise los datos e intente de nuevo por favor"
-
+            text: "Ocurrio un error, revise los datos e intente de nuevo por favor",
+            confirmButtonColor: 'rgb(220 38 38)',
+            background: "rgb(15 23 42)",
+            color: "white",
           })
           this.getProductos()
         })

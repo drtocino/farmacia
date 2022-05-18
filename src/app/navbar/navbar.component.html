@@ -1,9 +1,9 @@
-<aside class="w-64 h-full bg-gray-300 dark:bg-gray-800 fixed" [ngClass]="{'hidden':!sideBar}" >
+<aside class="w-64 h-full bg-gray-300 dark:bg-gray-800 navbar fixed" [ngClass]="{'w-16':!sideBar}" >
   <a class="flex items-center ml-2 -mb-4 p-2"  routerLink="/app">
     <fa-icon [icon]="logo" [size]="'2x'" class=" text-emerald-500"></fa-icon>
-    <span class="ml-3 self-center font-semibold whitespace-nowrap text-xl">Farmacia</span>
+    <span class="ml-3 self-center font-semibold whitespace-nowrap text-xl" [ngClass]="{'hidden':!sideBar}">Farmacia</span>
   </a>
-  <button (click)=hideNav() class="bg-slate-400/80 dark:bg-slate-700 absolute -right-4 rounded-full px-2 py-2 w-10 h-10 ">
+  <button (click)=hideNav() class="bg-slate-400/80 dark:bg-slate-700 absolute -right-4 rounded-full px-2 py-2 w-10 h-10 arrow" [ngClass]="{'rotate-[540deg]':!sideBar}">
     <fa-icon [icon]="arrow" class=""></fa-icon>
   </button>
   <div class="overflow-y-auto py-4 px-3 bg-gray-300 dark:bg-gray-800">
@@ -11,19 +11,19 @@
       <li class="h-10">
         <a class="flex items-center p-2 text-base h-full rounded-lg hover:bg-gray-400 dark:hover:bg-gray-700" routerLink="/app" >
           <fa-icon [icon]="dashboard" class="w-4 text-center"></fa-icon>
-          <span class="ml-3">Dashboard</span>
+          <span class="ml-3" [ngClass]="{'hidden':!sideBar}">Dashboard</span>
         </a>
       </li>
       <li class="h-10">
         <a class="flex items-center p-2 text-base h-full rounded-lg hover:bg-gray-400 dark:hover:bg-gray-700" routerLink="/app/usuarios" >
           <fa-icon [icon]="users" class="w-4 text-center"></fa-icon>
-          <span class="ml-3">Usuarios</span>
+          <span class="ml-3" [ngClass]="{'hidden':!sideBar}">Usuarios</span>
         </a>
       </li>
       <li class="h-10">
         <a class="flex items-center p-2 text-base h-full rounded-lg hover:bg-gray-400 dark:hover:bg-gray-700" routerLink="/app/productos" >
           <fa-icon [icon]="pills" class="w-4"></fa-icon>
-          <span class="ml-3">Productos</span>
+          <span class="ml-3" [ngClass]="{'hidden':!sideBar}">Productos</span>
         </a>
       </li>
     </ul>

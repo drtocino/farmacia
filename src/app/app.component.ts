@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   session : Session = new Session();
   logged : boolean = false;
   title = 'Farmacia';
+  contMargin = "ml-64";
 
   faCoffe = faCoffee;
 
@@ -21,6 +22,11 @@ export class AppComponent implements OnInit {
     if(this.cookieService.get('nombre')){
       this.logged = true;
     }
+  }
+
+  navBarHide(hide :any){
+    console.log(hide)
+    !hide ? this.contMargin = "ml-64" : this.contMargin = "ml-14"
   }
   
   handleAuth(session : Session){

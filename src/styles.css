@@ -14,3 +14,10 @@ html{
     background-size: cover;
     width: auto;
 }
+
+.main-container{
+    transition: margin 1s ;
+}
+.arrow{
+    transition: transform 1s;
+}
