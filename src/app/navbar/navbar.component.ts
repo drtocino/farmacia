@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { faArrowAltCircleRight, faArrowRight, faCaretLeft, faCaretRight, faCoffee, faDashboard, faGripHorizontal, faPills, faStaffAesculapius, faTriangleCircleSquare, faTriangleExclamation, faUsers } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
+import { faArrowAltCircleRight, faArrowRight, faCaretLeft, faCaretRight, faCheck, faCoffee, faDashboard, faGripHorizontal, faHouseChimneyMedical, faLadderWater, faMoneyBill, faMoneyBill1, faMoneyBill1Wave, faMoneyBillAlt, faMoneyBillWheat, faPills, faSignOut, faStaffAesculapius, faTriangleCircleSquare, faTriangleExclamation, faUsers } from '@fortawesome/free-solid-svg-icons';
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({
@@ -14,13 +15,20 @@ export class NavbarComponent implements OnInit {
   pills = faPills
   arrow = faCaretLeft
   logo = faStaffAesculapius
+  signout = faSignOut
+  venta = faMoneyBill1Wave
+  laboratorio = faHouseChimneyMedical
 
   sideBar : boolean = false;
   rol : string = "";
 
+  admin = "admin"
+  farmaceutico = "farmaceutico"
+  cajero = "cajero"
+
   @Output() hideNavBar = new EventEmitter();
 
-  constructor(private cookieService : CookieService) { }
+  constructor(private cookieService : CookieService,private router : Router) { }
 
   ngOnInit(): void {
     this.cookieService.get("nombre") ? this.sideBar = true : this.sideBar = false;
@@ -31,6 +39,11 @@ export class NavbarComponent implements OnInit {
   hideNav(){
     this.sideBar = !this.sideBar;
     this.hideNavBar.emit(!this.sideBar)
+  }
+
+  salir(){
+    this.cookieService.deleteAll("/");
+    this.router.navigate(['/'])
   }
 
 }

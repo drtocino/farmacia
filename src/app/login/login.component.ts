@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
       this.session.passCorrect = val.passCorrect;
       this.session.logged = true;
       this.session.nombre = val.nombre
+      this.session.rol = val.rol
       if(val.exists && val.passCorrect){
         Swal.fire({
           title: 'Bienvenido',
@@ -42,6 +43,7 @@ export class LoginComponent implements OnInit {
         });
         this.enviarForm.emit(this.session );
         this.cookieService.set("nombre", val.nombre);
+        this.cookieService.set("rol", val.rol);
         this.router.navigate(['/app']);
       }else{
         if(val.exists){

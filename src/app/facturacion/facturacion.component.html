@@ -1,1 +1,71 @@
-<p>facturacion works!</p>
+<div>
+    <h1 class="font-semibold text-xl mb-4">Vender</h1>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-1">
+        <div>
+            <input type="text" class="bg-inherit border-2 border-slate-700 rounded mb-2 text-sm px-2 py-1 outline-none w-full text-slate-400" placeholder="Buscar producto" [(ngModel)]="busqueda" (ngModelChange)="filtrarProductos()">
+
+            <div class="relative overflow-x-auto rounded">
+                <table class="w-full text-sm text-left text-gray-400">
+                    <thead class="text-xs uppercase bg-gray-700">
+                        <tr>
+                            <th class="px-6 py-2" >Nombre</th>
+                            <th class="px-6 py-2" >Stock</th>
+                            <th class="px-6 py-2" >Precio</th>
+                            <th class="px-6 py-2" ></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="bg-gray-800 border-t border-gray-700" *ngFor="let product of productosFilter" >
+                            <td class="px-6 py-2 font-medium text-white whitespace-nowrap" >{{product.nombre}}</td>
+                            <td class="px-6 py-2" >{{product.stock}}</td>
+                            <td class="px-6 py-2" >Bs. {{product.precio}}</td>
+                            <td class="px-6 py-2 float-right flex items-center gap-1" >
+                                <button (click)="agregarCompra(product)" class="bg-emerald-500 hover:bg-emerald-400 rounded-md px-2 py-1 text-white"><fa-icon [icon]="iconoAgregar"></fa-icon></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="bg-gray-800 px-3 py-2 rounded">
+            <h1 class="font-semibold mb-3">Factura</h1>
+            <div class="grid grid-cols-3 gap-2">
+                <div class="relative z-0 w-full mb-6 group">
+                    <input type="text" name="floating_password" id="floating_password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-emerald-500 focus:outline-none focus:ring-0 focus:border-emerald-600 peer" placeholder=" " required />
+                    <label for="floating_password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-emerald-600 peer-focus:dark:text-emerald-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">CI o NIT</label>
+                </div>
+                <div class="relative z-0 w-full mb-6 group col-span-2">
+                    <input type="text" name="floating_password" id="floating_password" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-emerald-500 focus:outline-none focus:ring-0 focus:border-emerald-600 peer" placeholder=" " required />
+                    <label for="floating_password" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-emerald-600 peer-focus:dark:text-emerald-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nombre</label>
+                </div>
+            </div>
+            <div class="relative overflow-x-auto rounded">
+                <table class="w-full text-sm text-left text-gray-400">
+                    <thead class="text-xs uppercase bg-gray-700">
+                        <tr>
+                            <th class="px-6 py-2" >Producto</th>
+                            <th class="px-6 py-2" >Cantidad</th>
+                            <th class="px-6 py-2" >P/U</th>
+                            <th class="px-6 py-2" ></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="bg-slate-800 " *ngFor="let product of listaCompra" >
+                            <td class="px-6 py-2 font-medium text-white whitespace-nowrap" >{{product.nombre}}</td>
+                            <td class="px-6 py-2" >{{product.cantidad}}</td>
+                            <td class="text-right px-6 py-2" >Bs. {{product.precioUnitario}}</td>
+                            <td class="px-6 py-2 float-right flex text-gray-100 items-center gap-1" >
+                                <button (click)="disminuirCantidad(product.nombre)" class="w-fit bg-red-600 rounded px-1 py-0"><fa-icon [icon]="iconoQuitar"></fa-icon></button>
+                                <button (click)="aumentarCantidad(product.nombre)" class="w-fit bg-emerald-600 rounded px-1 py-0"><fa-icon [icon]="iconoAgregar"></fa-icon></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="bg-slate-800 text-right">
+                    <span>Total: Bs {{total}}</span>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
