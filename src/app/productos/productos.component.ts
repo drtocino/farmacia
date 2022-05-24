@@ -101,7 +101,7 @@ export class ProductosComponent implements OnInit {
       cancelButtonText: "Cancelar",
       reverseButtons: true,
       preConfirm: () => {
-        this.http.delete<Response>(`http://localhost:3001/delProducto/${id}`).subscribe((val) => {
+        this.http.delete<Response>(`http://localhost:3001/delLaboratorio/${id}`).subscribe((val) => {
           this.getProductos();
           val ? Swal.fire({
             title: "Exito",

@@ -12,6 +12,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProductosComponent } from './productos/productos.component';
 import { FacturacionComponent } from './facturacion/facturacion.component';
+import { LaboratoriosComponent } from './laboratorios/laboratorios.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { FacturacionComponent } from './facturacion/facturacion.component';
     NavbarComponent,
     ProductosComponent,
     FacturacionComponent,
+    LaboratoriosComponent,
   ],
   imports: [
     FormsModule,
